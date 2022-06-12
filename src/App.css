@@ -13,6 +13,17 @@ main .top{
   align-items:center;
   flex-direction:column;
 }
+main .top .right{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:row;
+}
+main .top .right textarea{
+  width: 300px;
+  height: 150px;
+  resize: none;
+}
 
 main .bottom{
   display:flex;

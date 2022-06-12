@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import SBR from './caixas/sbr/SBR';
+import SBR from './caixas/sbr/SBR.jsx';
 
 function App() {
   const [preco, setPreco] = useState(0);
@@ -50,22 +50,37 @@ function App() {
 
   return (
     <main>
-      <h1>Gerador de caixas</h1>
       <div className="top">
-        <div>
-          <p>Preços</p>
-          <textarea
-            onChange={
-              e => setPreco(tratarPrecos(e.target.value))
-            }
-          />
+        <div className="left">
+          <h1>Gerador de caixas</h1>
+          <select name="Mercado" id="mercado">
+            <option value="sbr">SBR</option>
+            <option value="pessoto">Pessoto</option>
+            <option value="ponto_certo">Ponto Certo</option>
+            <option value="ja">JA</option>
+            <option value="falavina">Falavina</option>
+            <option value="supervalle_1">SuperValle 1</option>
+            <option value="supervalle_2">SuperValle 2</option>
+          </select>
         </div>
-        <div>
-          <p>Descrições</p>
-          <textarea
-            onChange={
-              e => setDescricao(tratarDescricao(e.target.value))
-            } />
+        <div className="right">
+          <div>
+            <p>Descrições</p>
+            <textarea
+              placeholder={`Produto 1\nProduto 2`}
+              onChange={
+                e => setDescricao(tratarDescricao(e.target.value))
+              } />
+          </div>
+          <div>
+            <p>Preços</p>
+            <textarea
+              placeholder={`xx,xx\nxx,xx`}
+              onChange={
+                e => setPreco(tratarPrecos(e.target.value))
+              }
+            />
+          </div>
         </div>
       </div>
       <div className="bottom">
