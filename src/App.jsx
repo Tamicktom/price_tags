@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Box from './Box';
+import SBR from './caixas/sbr/SBR';
 
 function App() {
   const [preco, setPreco] = useState(0);
@@ -14,13 +14,6 @@ function App() {
   function tratarDescricao(des) {
     des = des.split("\n");
     return des;
-  }
-
-  const gerar = () => {
-    console.log(preco)
-    return (
-      <Box preco_grande="preco" />
-    )
   }
 
   function boxers() {
@@ -38,22 +31,26 @@ function App() {
       desc.push(list.slice(0, half));
       desc.push(list.slice(half, list.length));
 
-      if (tmp[1].length < 2) tmp[1] += "0";
-      tag.push(
-        <Box
-          tipo={tipo}
-          preco_grande={tmp[0]}
-          preco_pequeno={tmp[1]}
-          descricao_cima={(desc[0].toString()).replace(/\,/g, " ")}
-          descricao_baixo={(desc[1].toString()).replace(/\,/g, " ")}
-        />)
+      try {
+        if (tmp[1].length < 2) tmp[1] += "0";
+        tag.push(
+          <SBR
+            tipo={tipo}
+            preco_grande={tmp[0]}
+            preco_pequeno={tmp[1]}
+            descricao_cima={(desc[0].toString()).replace(/\,/g, " ")}
+            descricao_baixo={(desc[1].toString()).replace(/\,/g, " ")}
+          />)
+      } catch (e) {
+
+      }
     }
     return tag;
   }
 
   return (
     <main>
-      <h1>Gerador de caixas sbr</h1>
+      <h1>Gerador de caixas</h1>
       <div className="top">
         <div>
           <p>Preços</p>
