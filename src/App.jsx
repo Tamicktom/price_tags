@@ -51,8 +51,8 @@ function App() {
             tipo={tipo}
             preco_grande={tmp[0]}
             preco_pequeno={tmp[1]}
-            descricao_cima={(desc[0].toString()).replace(/\,/g, " ")}
-            descricao_baixo={(desc[1].toString()).replace(/\,/g, " ")}
+            descricao_cima={(desc[0].toString()).toUpperCase()}
+            descricao_baixo={(desc[1].toString()).toUpperCase()}
           />)
       } catch (e) {
 
@@ -66,7 +66,10 @@ function App() {
       <div className="top">
         <div className="left">
           <h1>Gerador de caixas</h1>
-          <select onChange={(e) => { setMercado(e.target.value) }} name="Mercado" id="mercado">
+          <select
+            onChange={(e) => { setMercado(e.target.value) }}
+            name="Mercado"
+            id="mercado">
             {selectOptions(optionsMercado)}
           </select>
         </div>
