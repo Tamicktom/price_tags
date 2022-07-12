@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import SBR from './caixas/sbr/SBR.jsx';
+
+const optionsMercado = [
+  "sbr",
+  "pessoto",
+  "ponto_certo", "ja",
+  "falavina",
+  "supervalle_1",
+  "supervalle_2"
+];
 
 function App() {
   const [preco, setPreco] = useState(0);
   const [descricao, setDescricao] = useState(0);
+  const [mercado, setMercado] = useState(0);
+  const id = useId();
 
   function tratarPrecos(precos) {
     let array = precos.split("\n");
@@ -35,6 +47,7 @@ function App() {
         if (tmp[1].length < 2) tmp[1] += "0";
         tag.push(
           <SBR
+            key={id + i}
             tipo={tipo}
             preco_grande={tmp[0]}
             preco_pequeno={tmp[1]}
@@ -53,14 +66,8 @@ function App() {
       <div className="top">
         <div className="left">
           <h1>Gerador de caixas</h1>
-          <select name="Mercado" id="mercado">
-            <option value="sbr">SBR</option>
-            <option value="pessoto">Pessoto</option>
-            <option value="ponto_certo">Ponto Certo</option>
-            <option value="ja">JA</option>
-            <option value="falavina">Falavina</option>
-            <option value="supervalle_1">SuperValle 1</option>
-            <option value="supervalle_2">SuperValle 2</option>
+          <select onChange={(e) => { setMercado(e.target.value) }} name="Mercado" id="mercado">
+            {selectOptions(optionsMercado)}
           </select>
         </div>
         <div className="right">
@@ -91,5 +98,20 @@ function App() {
     </main>
   );
 }
+
+const selectOptions = (optionsList) => {
+  let options = [];
+  const id = useId();
+  for (let i = 0; i < optionsList.length; i++) {
+    options.push(
+      <option
+        key={id + i}
+        value={optionsList[i]}>
+        {optionsList[i]}
+      </option>);
+  }
+  return options;
+}
+
 
 export default App;

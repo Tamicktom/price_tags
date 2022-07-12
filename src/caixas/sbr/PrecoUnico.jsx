@@ -4,7 +4,7 @@ const Box = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
-    width={90}
+    width={150}
     height={90}
     style={{
       shapeRendering: "geometricPrecision",
