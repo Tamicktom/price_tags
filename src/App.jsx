@@ -51,8 +51,8 @@ function App() {
             tipo={tipo}
             preco_grande={tmp[0]}
             preco_pequeno={tmp[1]}
-            descricao_cima={(desc[0].toString()).toUpperCase()}
-            descricao_baixo={(desc[1].toString()).toUpperCase()}
+            descricao_cima={(desc[0].toString()).replace(',', ' ').toUpperCase()}
+            descricao_baixo={(desc[1].toString()).replace(',', ' ').toUpperCase()}
           />)
       } catch (e) {
 
