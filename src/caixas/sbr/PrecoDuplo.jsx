@@ -30,13 +30,13 @@ const PrecoDuplo = (props) => (
                     fill: '#f20530',
                 }}
             />
-            <text x={"50%"} y={105.33} className="fil1 fnt0" style={{
+            <text x={"30%"} y={105.33} className="fil1 fnt0" style={{
                 textAlign: "center",
                 textAnchor: "middle"
             }}>
                 {props.descricao_cima.toUpperCase()}
             </text>
-            <text x={"50%"} y={122.58} className="fil1 fnt0" style={{
+            <text x={"30%"} y={122.58} className="fil1 fnt0" style={{
                 textAlign: "center",
                 textAnchor: "middle"
             }}>
