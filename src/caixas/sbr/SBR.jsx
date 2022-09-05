@@ -11,6 +11,7 @@ function SBR(props) {
         preco_pequeno={props.preco_pequeno}
         descricao_cima={props.descricao_cima}
         descricao_baixo={props.descricao_baixo}
+        color={props.color}
       />
     )
   }
@@ -21,6 +22,7 @@ function SBR(props) {
         preco_pequeno={props.preco_pequeno}
         descricao_cima={props.descricao_cima}
         descricao_baixo={props.descricao_baixo}
+        color={props.color}
       />
     )
   }
@@ -30,6 +32,7 @@ function SBR(props) {
       preco_pequeno={props.preco_pequeno}
       descricao_cima={props.descricao_cima}
       descricao_baixo={props.descricao_baixo}
+      color={props.color}
     />
   )
 }

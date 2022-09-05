@@ -17,7 +17,12 @@ function App() {
   const [preco, setPreco] = useState(0);
   const [descricao, setDescricao] = useState(0);
   const [mercado, setMercado] = useState("SBR");
+  const [cor, setCor] = useState("#f20530");
   const id = useId();
+
+  const handleColor = (e) => {
+    setCor(e.target.value);
+  }
 
   const priceTag = (tipo, props) => {
     if (mercado == "SBR") {
@@ -85,6 +90,7 @@ function App() {
           descricao_cima: desc[0].toString().replace(/\,/g, " ").toUpperCase(),
           descricao_baixo: desc[1].toString().replace(/\,/g, " ").toUpperCase(),
           tipo: tipo,
+          color: cor,
         }
         tag.push(
           priceTag(tipo, props)
@@ -110,6 +116,7 @@ function App() {
           >
             {selectOptions(optionsMercado)}
           </select>
+          <input onChange={(e) => handleColor(e)} type="color" />
         </div>
         <div className="right">
           <div>
