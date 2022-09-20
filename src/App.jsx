@@ -116,7 +116,14 @@ function App() {
           >
             {selectOptions(optionsMercado)}
           </select>
-          <input onChange={(e) => handleColor(e)} type="color" />
+          <div>
+            <label htmlFor="">Cor para a tag</label>
+            <input onChange={(e) => handleColor(e)} type="color" />
+          </div>
+          <div>
+            <label htmlFor="">Cor para o texto</label>
+            <input onChange={(e) => handleColor(e)} type="color" />
+          </div>
         </div>
         <div className="right">
           <div>
