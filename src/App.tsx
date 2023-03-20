@@ -1,58 +1,51 @@
-import React, { useState, useId, useEffect } from 'react';
+//* Libraries imports
+import { useState, useId, type ChangeEvent } from 'react';
+
+//* Styles imports
 import './App.css';
+
+//* Components imports
 import SBR from './caixas/sbr/SBR.jsx';
-import SuperValle from './caixas/super_valle/SuperValle';
+
+//* Types imports
+import type { BoxProps } from './types/BoxProps';
 
 const optionsMercado = [
   "SBR",
-  "SuperValle",
 ];
 
-const tipos = {
-  SBR: <SBR />,
-  SuperValle: <SuperValle />,
-}
-
-function App() {
-  const [preco, setPreco] = useState(0);
-  const [descricao, setDescricao] = useState(0);
+export default function App() {
+  const [preco, setPreco] = useState<string[]>([]);
+  const [descricao, setDescricao] = useState<string[]>([]);
   const [mercado, setMercado] = useState("SBR");
   const [cor, setCor] = useState("#f20530");
   const id = useId();
 
-  const handleColor = (e) => {
+  const handleColor = (e: ChangeEvent<HTMLInputElement>) => {
     setCor(e.target.value);
   }
 
-  const priceTag = (tipo, props) => {
+  const priceTag = (tipo: number, props: BoxProps) => {
     if (mercado == "SBR") {
       return (
         <SBR
-          tipo={tipo}
           key={id + mercado + tipo + Math.random()}
           {...props}
         />)
     }
-    if (mercado == "SuperValle") {
-      return (<SuperValle
-        tipo={tipo}
-        key={id + mercado + tipo + Math.random()}
-        {...props}
-      />)
-    }
   }
 
-  function tratarPrecos(precos) {
-    let array = precos.split("\n");
-    return array;
+  function tratarPrecos(precos: string) {
+    const res = precos.split("\n");
+    return res;
   }
 
-  function tratarDescricao(des) {
-    des = des.split("\n");
-    return des;
+  function tratarDescricao(description: string) {
+    const res = description.split("\n");
+    return res;
   }
 
-  const selectOptions = (optionsList) => {
+  const selectOptions = (optionsList: string[]) => {
     let options = [];
     const id = useId();
     for (let i = 0; i < optionsList.length; i++) {
@@ -153,8 +146,3 @@ function App() {
     </main>
   );
 }
-
-
-
-
-export default App;

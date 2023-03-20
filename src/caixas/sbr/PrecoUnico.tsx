@@ -1,4 +1,6 @@
-function Box(props) {
+import type { BoxProps } from "../../types/BoxProps"
+
+function Box(props: BoxProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +10,7 @@ function Box(props) {
       style={{
         shapeRendering: "geometricPrecision",
         textRendering: "geometricPrecision",
-        imageRendering: "optimizeQuality",
+        imageRendering: "auto",
         fillRule: "evenodd",
         clipRule: "evenodd",
       }}

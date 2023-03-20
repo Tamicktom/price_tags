@@ -1,9 +1,10 @@
-import React from "react";
-import PrecoUnico from "./PrecoUnico.jsx";
-import PrecoDuplo from "./PrecoDuplo.jsx";
-import PrecoTriplo from "./PrecoTriplo.jsx";
+import PrecoUnico from "./PrecoUnico";
+import PrecoDuplo from "./PrecoDuplo";
+import PrecoTriplo from "./PrecoTriplo";
 
-function SBR(props) {
+import type { BoxProps } from "../../types/BoxProps";
+
+function SBR(props: BoxProps) {
   if (props.tipo == 0 || props.tipo == 1) {
     return (
       <PrecoUnico
@@ -12,6 +13,7 @@ function SBR(props) {
         descricao_cima={props.descricao_cima}
         descricao_baixo={props.descricao_baixo}
         color={props.color}
+        tipo={props.tipo}
       />
     )
   }
@@ -23,6 +25,7 @@ function SBR(props) {
         descricao_cima={props.descricao_cima}
         descricao_baixo={props.descricao_baixo}
         color={props.color}
+        tipo={props.tipo}
       />
     )
   }
@@ -33,6 +36,7 @@ function SBR(props) {
       descricao_cima={props.descricao_cima}
       descricao_baixo={props.descricao_baixo}
       color={props.color}
+      tipo={props.tipo}
     />
   )
 }

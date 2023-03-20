@@ -1,6 +1,6 @@
-import React from "react"
+import type { BoxProps } from "../../types/BoxProps"
 
-const PrecoDuplo = (props) => (
+const PrecoTriplo = (props: BoxProps) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlSpace="preserve"
@@ -9,7 +9,7 @@ const PrecoDuplo = (props) => (
         style={{
             shapeRendering: "geometricPrecision",
             textRendering: "geometricPrecision",
-            imageRendering: "optimizeQuality",
+            imageRendering: "auto",
             fillRule: "evenodd",
             clipRule: "evenodd",
         }}
@@ -25,7 +25,7 @@ const PrecoDuplo = (props) => (
         </defs>
         <g id="Camada_x0020_1">
             <path x="50%"
-                d="M 126.53446,21.89 H 2.6591983 c -3.759066,0 -6.8358812,2.32 -6.8358812,5.15 v 18.59 l -7.1970721,5.42 c -2.662114,2 -2.662114,5.28 0,7.28 l 7.1970721,5.41 v 18.59 c 0,2.83 3.0768152,5.15 6.8358812,5.15 H 126.53446 c 3.75906,0 6.83588,-2.32 6.83588,-5.15 v -55.3 c 0,-2.83 -3.07682,-5.15 -6.83588,-5.15 z"
+                d="M 144.51947,21.89 H -19.557791 c -4.979018,0 -9.054371,2.32 -9.054371,5.15 v 18.59 l -4.40902,5.42 c -1.921166,3.243405 -1.798607,4.243504 0,7.28 l 4.40902,5.41 v 18.59 c 0,2.83 4.075353,5.15 9.054371,5.15 H 144.51947 c 4.979,0 9.05437,-2.32 9.05437,-5.15 v -55.3 c 0,-2.83 -4.07537,-5.15 -9.05437,-5.15 z"
                 style={{
                     fill: `${props.color}`,
                 }}
@@ -43,7 +43,7 @@ const PrecoDuplo = (props) => (
                 {props.descricao_baixo.toUpperCase()}
             </text>
             <text
-                x={-4.2365851}
+                x={-29}
                 y={81.86}
                 className="fil2"
                 style={{
@@ -55,7 +55,7 @@ const PrecoDuplo = (props) => (
                 {props.preco_grande}
             </text>
             <text
-                x={81.447311}
+                x={102}
                 y={52}
                 className="fil2"
                 style={{
@@ -70,4 +70,4 @@ const PrecoDuplo = (props) => (
     </svg>
 )
 
-export default PrecoDuplo
+export default PrecoTriplo
