@@ -93,8 +93,9 @@ export default function App() {
   }
 
   return (
-    <main className="flex flex-col items-center font-sans p-5 w-full">
-      <div className="top flex flex-col justify-center w-full mb-5 gap-4">
+    <main className="flex flex-row items-center font-sans w-screen h-screen overflow-hidden">
+
+      <div className="flex flex-col justify-start w-96 h-full gap-4 p-4 bg-gray-200">
         <div className="flex flex-col justify-center w-full items-center gap-4">
           <h1 className='text-3xl font-bold'>Gerador de caixas</h1>
           <select
@@ -116,26 +117,28 @@ export default function App() {
             <input onChange={(e) => handleColor(e)} type="color" />
           </div> */}
         </div>
-        <div className="flex flex-row w-full justify-center items-center">
-          <div className='flex flex-col justify-start items-start'>
-            <p className='font-bold'>Descrições</p>
+        <div className="flex flex-col w-full justify-center items-center gap-4">
+          <div className='flex flex-col justify-start items-start w-full'>
+            <p className='font-bold text-xl'>Descrições</p>
             <textarea
               placeholder={`Produto 1\nProduto 2`}
               onChange={e => setDescricao(tratarDescricao(e.target.value))}
-              className="w-48 h-20 text-sm p-1 border-2 border-gray-300 rounded-md"
+              className="w-full h-72 max-h-72 p-1 border-2 border-gray-300 rounded-md text-lg"
             />
           </div>
-          <div className='flex flex-col justify-start items-start'>
-            <p className='font-bold'>Preços</p>
+          <div className='flex flex-col justify-start items-start w-full'>
+            <p className='font-bold text-xl'>Preços</p>
             <textarea
               placeholder={`xx,xx\nxx,xx`}
               onChange={e => setPreco(tratarPrecos(e.target.value))}
-              className="w-48 h-20 text-sm p-1 border-2 border-gray-300 rounded-md"
+              className="w-full h-72 max-h-72 p-1 border-2 border-gray-300 rounded-md text-lg"
             />
           </div>
         </div>
       </div>
-      <div className="flex flex-row flex-wrap">
+
+
+      <div className="flex flex-row flex-wrap w-full h-full p-4">
         {
           boxers()
         }
