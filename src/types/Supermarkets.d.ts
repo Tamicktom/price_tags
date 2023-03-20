@@ -1,0 +1,1 @@
+export type SupermarketOptions = "SBR";

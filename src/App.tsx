@@ -2,34 +2,23 @@
 import { useState, useId, type ChangeEvent } from 'react';
 
 //* Components imports
-import SBR from './caixas/sbr/SBR.jsx';
+import Tags from './components/Tag';
 
 //* Types imports
-import type { BoxProps } from './types/BoxProps';
+import type { SupermarketOptions } from './types/Supermarkets';
 
-const optionsMercado = [
-  "SBR",
-];
+
+const optionsMercado: SupermarketOptions[] = ["SBR"];
 
 export default function App() {
   const [preco, setPreco] = useState<string[]>([]);
   const [descricao, setDescricao] = useState<string[]>([]);
-  const [mercado, setMercado] = useState("SBR");
+  const [mercado, setMercado] = useState<SupermarketOptions>("SBR");
   const [cor, setCor] = useState("#f20530");
   const id = useId();
 
   const handleColor = (e: ChangeEvent<HTMLInputElement>) => {
     setCor(e.target.value);
-  }
-
-  const priceTag = (tipo: number, props: BoxProps) => {
-    if (mercado == "SBR") {
-      return (
-        <SBR
-          key={id + mercado + tipo + Math.random()}
-          {...props}
-        />)
-    }
   }
 
   function tratarPrecos(precos: string) {
@@ -57,40 +46,7 @@ export default function App() {
     return options;
   }
 
-  function boxers() {
-    let tag = [];
-    if (preco.length != descricao.length)
-      return <p>O tamanho de preço e descrição precisam ser iguais!</p>;
 
-    for (let i = 0; i < preco.length; i++) {
-      let tmp = preco[i].split(',');
-      const tipo = tmp[0].length;
-
-      let desc = [];
-      let list = descricao[i].split(" ");
-      const half = Math.ceil(list.length / 2);
-      desc.push(list.slice(0, half));
-      desc.push(list.slice(half, list.length));
-
-      try {
-        if (tmp[1].length < 2) tmp[1] += "0";
-        const props = {
-          preco_grande: tmp[0],
-          preco_pequeno: tmp[1],
-          descricao_cima: desc[0].toString().replace(/\,/g, " ").toUpperCase(),
-          descricao_baixo: desc[1].toString().replace(/\,/g, " ").toUpperCase(),
-          tipo: tipo,
-          color: cor,
-        }
-        tag.push(
-          priceTag(tipo, props)
-        )
-      } catch (e) {
-
-      }
-    }
-    return tag;
-  }
 
   return (
     <main className="flex flex-row items-center font-sans w-screen h-screen overflow-hidden">
@@ -102,7 +58,7 @@ export default function App() {
             name="Mercado"
             id="mercado"
             onBlur={(e) => {
-              setMercado(e.target.value)
+              setMercado(e.target.value as SupermarketOptions);
             }}
             className="mb-2 text-sm p-2 border-2 border-gray-300 rounded-md"
           >
@@ -112,10 +68,6 @@ export default function App() {
             <label htmlFor="">Cor para a tag</label>
             <input onChange={(e) => handleColor(e)} type="color" />
           </div>
-          {/* <div className='mb-2 flex flex-row justify-start items-center gap-4'>
-            <label htmlFor="">Cor para o texto</label>
-            <input onChange={(e) => handleColor(e)} type="color" />
-          </div> */}
         </div>
         <div className="flex flex-col w-full justify-center items-center gap-4">
           <div className='flex flex-col justify-start items-start w-full'>
@@ -137,13 +89,12 @@ export default function App() {
         </div>
       </div>
 
-
-      <div className="flex flex-row flex-wrap w-full h-full p-4">
-        {
-          boxers()
-        }
-      </div>
+      <Tags
+        price={preco}
+        description={descricao}
+        color={cor}
+        supermarket={mercado}
+      />
     </main>
-
   );
 }
