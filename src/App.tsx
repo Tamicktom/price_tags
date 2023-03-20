@@ -1,9 +1,6 @@
 //* Libraries imports
 import { useState, useId, type ChangeEvent } from 'react';
 
-//* Styles imports
-import './App.css';
-
 //* Components imports
 import SBR from './caixas/sbr/SBR.jsx';
 
@@ -96,53 +93,54 @@ export default function App() {
   }
 
   return (
-    <main>
-      <div className="top">
-        <div className="left">
-          <h1>Gerador de caixas</h1>
+    <main className="flex flex-col items-center font-sans p-5 w-full">
+      <div className="top flex flex-col justify-center w-full mb-5 gap-4">
+        <div className="flex flex-col justify-center w-full items-center gap-4">
+          <h1 className='text-3xl font-bold'>Gerador de caixas</h1>
           <select
             name="Mercado"
             id="mercado"
             onBlur={(e) => {
               setMercado(e.target.value)
             }}
+            className="mb-2 text-sm p-2 border-2 border-gray-300 rounded-md"
           >
             {selectOptions(optionsMercado)}
           </select>
-          <div>
+          <div className="mb-2 flex flex-row justify-start items-center gap-4">
             <label htmlFor="">Cor para a tag</label>
             <input onChange={(e) => handleColor(e)} type="color" />
           </div>
-          <div>
+          {/* <div className='mb-2 flex flex-row justify-start items-center gap-4'>
             <label htmlFor="">Cor para o texto</label>
             <input onChange={(e) => handleColor(e)} type="color" />
-          </div>
+          </div> */}
         </div>
-        <div className="right">
-          <div>
-            <p>Descrições</p>
+        <div className="flex flex-row w-full justify-center items-center">
+          <div className='flex flex-col justify-start items-start'>
+            <p className='font-bold'>Descrições</p>
             <textarea
               placeholder={`Produto 1\nProduto 2`}
-              onChange={
-                e => setDescricao(tratarDescricao(e.target.value))
-              } />
+              onChange={e => setDescricao(tratarDescricao(e.target.value))}
+              className="w-48 h-20 text-sm p-1 border-2 border-gray-300 rounded-md"
+            />
           </div>
-          <div>
-            <p>Preços</p>
+          <div className='flex flex-col justify-start items-start'>
+            <p className='font-bold'>Preços</p>
             <textarea
               placeholder={`xx,xx\nxx,xx`}
-              onChange={
-                e => setPreco(tratarPrecos(e.target.value))
-              }
+              onChange={e => setPreco(tratarPrecos(e.target.value))}
+              className="w-48 h-20 text-sm p-1 border-2 border-gray-300 rounded-md"
             />
           </div>
         </div>
       </div>
-      <div className="bottom">
+      <div className="flex flex-row flex-wrap">
         {
           boxers()
         }
       </div>
     </main>
+
   );
 }
